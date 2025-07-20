@@ -4,13 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCircleQuestion,
   faCircleXmark,
-  faCloudUpload,
   faCoins,
   faEarthAsia,
   faEllipsisVertical,
   faGear,
   faKeyboard,
-  faMagnifyingGlass,
   faSignOut,
   faSpinner,
   faUser,
@@ -25,6 +23,8 @@ import images from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
 import Menu from '~/components/Propper/Menu';
+import { MessageIcon, UploadIcon, ActivityIcon, SearchIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -127,7 +127,7 @@ function Header() {
             <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
 
             <button className={cx('search-btn')}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
+              <SearchIcon />
             </button>
           </div>
         </HeadlessTippy>
@@ -135,9 +135,19 @@ function Header() {
         <div className={cx('actions')}>
           {currentUser ? (
             <>
-              <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
+              <Tippy delay={[0, 80]} content="Upload video" placement="bottom">
                 <button className={cx('action-btn')}>
-                  <FontAwesomeIcon icon={faCloudUpload} />
+                  <UploadIcon />
+                </button>
+              </Tippy>
+              <Tippy delay={[0, 80]} content="Message" placement="bottom">
+                <button className={cx('action-btn')}>
+                  <MessageIcon />
+                </button>
+              </Tippy>
+              <Tippy delay={[0, 80]} content="Activity" placement="bottom">
+                <button className={cx('action-btn')}>
+                  <ActivityIcon />
                 </button>
               </Tippy>
             </>
@@ -149,10 +159,11 @@ function Header() {
           )}
           <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
             {currentUser ? (
-              <img
+              <Image
                 src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/abbfc6f992f3c98236c3103bc2f3b631~tplv-tiktokx-cropcenter:100:100.jpeg?dr=14579&refresh_token=6ecabb1c&x-expires=1753084800&x-signature=3AA43nzQ38iaoX8KFTLvzgAR51M%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my"
                 className={cx('user-avatar')}
                 alt="NguyenVanA"
+                // fallback="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
               />
             ) : (
               <button className={cx('more-btn')}>
