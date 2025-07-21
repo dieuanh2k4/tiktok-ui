@@ -46,7 +46,7 @@ export const ActivityIcon = ({ width = '2.8rem', height = '2.8rem', className })
 export const SearchIcon = ({ width = '2.4rem', height = '2.4rem', className }) => (
   <svg
     className={className}
-    fill="#333"
+    fill="currentColor"
     viewBox="0 0 48 48"
     xmlns="http://www.w3.org/2000/svg"
     width={width}
