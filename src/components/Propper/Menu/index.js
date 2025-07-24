@@ -55,7 +55,7 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFb 
                 }}
               />
             )}
-            {renderItem()}
+            <div className={cx('menu-body')}>{renderItem()}</div>
           </PropperWrapper>
         </div>
       )}
