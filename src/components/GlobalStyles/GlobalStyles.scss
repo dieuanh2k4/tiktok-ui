@@ -7,6 +7,8 @@
   --text-color: #161823;
   --white: #fff;
 
+  --font-family: 'TiktokFont', 'IBM Plex Sans', 'sans-serif';
+
   // defaulLayout
   --default-layout-header-height: 60px;
   --default-width-content: 1150px;
@@ -25,7 +27,7 @@ html {
 }
 
 body {
-  font-family: 'TiktokFont', 'IBM Plex Sans', sans-serif;
+  font-family: var(--font-family);
   font-size: 1.6rem;
   line-height: 1.5;
   text-rendering: optimizeSpeed;
