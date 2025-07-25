@@ -1,19 +1,19 @@
-import routesConfig from '~/config/route';
+import Config from '~/config';
 
 import Home from '~/pages/Home';
 import Following from '~/pages/Following';
 import Profile from '~/pages/Profile';
 import Upload from '~/pages/Upload';
 import Search from '~/pages/Search';
-import { HeaderOnly } from '~/components/Layout';
+import { HeaderOnly } from '~/layouts';
 
 // public routes: ko cần đăng nhập vẫn xem được
 export const publicRoutes = [
-  { path: routesConfig.home, component: Home },
-  { path: routesConfig.following, component: Following },
-  { path: routesConfig.profile, component: Profile },
-  { path: routesConfig.upload, component: Upload, layout: HeaderOnly },
-  { path: routesConfig.search, component: Search, layout: null },
+  { path: Config.routes.home, component: Home },
+  { path: Config.routes.following, component: Following },
+  { path: Config.routes.profile, component: Profile },
+  { path: Config.routes.upload, component: Upload, layout: HeaderOnly },
+  { path: Config.routes.search, component: Search, layout: null },
 ];
 
 export const privateRoutes = [];

@@ -21,7 +21,7 @@ import Menu from '~/components/Propper/Menu';
 import { MessageIcon, UploadIcon, ActivityIcon, SearchIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import Search from '../Search';
-import routesConfig from '~/config/route';
+import routesConfig from '~/config';
 
 const cx = classNames.bind(styles);
 
