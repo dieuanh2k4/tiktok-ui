@@ -7,7 +7,7 @@ import styles from './Menu.module.scss';
 import MenuItem from './MenuItem';
 import Header from './Header';
 import { useState } from 'react';
-import { data } from 'react-router-dom';
+// import { data } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -37,6 +37,24 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFb 
     });
   };
 
+  const handleBack = () => {
+    setHistory((prev) => prev.slice(0, prev.length - 1));
+  };
+
+  const renderResult = (attrs) => (
+    <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
+      <PropperWrapper className={cx('menu-popper')}>
+        {history.length > 1 && <Header title={current.title} onBack={handleBack} />}
+        <div className={cx('menu-body')}>{renderItem()}</div>
+      </PropperWrapper>
+    </div>
+  );
+
+  // reset to first page
+  const handleResetMenu = () => {
+    setHistory((prev) => prev.slice(0, 1));
+  };
+
   return (
     <Tippy
       // visible
@@ -45,22 +63,8 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFb 
       offset={[12, 8]}
       hideOnClick={hideOnClick}
       placement="bottom-end"
-      render={(attrs) => (
-        <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
-          <PropperWrapper className={cx('menu-popper')}>
-            {history.length > 1 && (
-              <Header
-                title={current.title}
-                onBack={() => {
-                  setHistory((prev) => prev.slice(0, prev.length - 1));
-                }}
-              />
-            )}
-            <div className={cx('menu-body')}>{renderItem()}</div>
-          </PropperWrapper>
-        </div>
-      )}
-      onHide={() => setHistory((prev) => prev.slice(0, 1))}
+      render={renderResult}
+      onHide={handleResetMenu}
     >
       {children}
     </Tippy>
